@@ -1,0 +1,391 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+
+     xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Configuration="clr-namespace:System.Configuration;assembly=System.Configuration.ConfigurationManager" xmlns:VisualBasic="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core" mc:Ignorable="av" x:Class="Agricultural_modern_system.MainWindow"
+
+     Title="Modern Agricultural System" Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <Color x:Key="SolidColorBrushColor1">#FF9252FA</Color>
+        <Color x:Key="SysColor">#FF623ED0</Color>
+
+    </Window.Resources>
+
+
+    <Border 
+        Background="#eff2f7" CornerRadius="30" x:Name="modern_Agricultural_System" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown" >
+        <Border.Effect>
+            <DropShadowEffect/>
+        </Border.Effect>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Left menu-->
+            <Grid x:Name="BaseGrid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"  />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <!--menu Icon-->
+                <Button x:Name="MenuButton"  Margin="20,28,0,35" Style="{StaticResource topButton}" Click="MenuButton_Click"  >
+                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15" />
+                </Button>
+                <Border x:Name="MenuBorder" Grid.Row="1" Background="#623ed0" CornerRadius="0 50 0 30" Visibility="Visible">
+                    <!--menu logo-->
+                    <DockPanel >
+                        <Border x:Name="ImageBorder" Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                                DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0" >
+
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Images/pic1.jpeg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                        </Border>
+                        <!--Menu Title-->
+                        <TextBlock Text="Agricultural System" Foreground="white" FontSize="20" FontWeight="SemiBold"
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10 "/>
+
+                        <!--Menu Separator-->
+                        <Separator Margin="20" DockPanel.Dock="Top" Height="0.8" Background="#725fdc"/>
+                        <!--Menu puttons-->
+                        <StackPanel DockPanel.Dock="Top" >
+                            <Button x:Name="Informations" Style="{StaticResource menuButton}" Click="Informations_Click" >
+                                <StackPanel Orientation="Horizontal" >
+                                    <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Status                     "/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="Controls" Style="{StaticResource menuButton}" Click="controls_Click">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Icon:PackIconMaterial Kind="Wrench"  Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Controls                  "/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="About_us" Style="{StaticResource menuButton}" Click="About_us_Click">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Icon:PackIconMaterial Kind="Information" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="About Us                "/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="1" VerticalAlignment="Top" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Width="120" HorizontalAlignment="Left" Margin="760,20,0,20">
+                    <!--Top Buttoms-->
+                    <Button x:Name="Personal_Account"  Style="{StaticResource topButton}" Visibility="Collapsed" Margin="0 0 20 0" HorizontalAlignment="Right" Click="Personal_Account_Click">
+                        <Icon:PackIconMaterial Kind="Account"/>
+
+                    </Button>
+
+                    <Button x:Name="logout" Style="{StaticResource topButton}" Margin="0 0 60 0" HorizontalAlignment="Right" Click="logout_Click">
+                        <Icon:PackIconMaterial Kind="Logout"/>
+                    </Button>
+                </Grid>
+                <!--MainSellection-->
+                <Grid x:Name="infogrid" Margin="0,0,0,-649" Grid.Row="1" Visibility="Collapsed">
+                    <TextBlock Text="Status" FontSize="32" FontWeight="SemiBold" Margin="30,20,0,582"
+                HorizontalAlignment="Left" Foreground="#121518" Width="89"/>
+                    <!--Menu Separator-->
+                    <Separator Margin="10,66,30,582" Background="#725fdc" Grid.ColumnSpan="2"/>
+                    <!--Lables-->
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                            Margin="102,129,645,390">
+                        <Label x:Name="Temprature_lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                              FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBox HorizontalAlignment="Left" Margin="102,94,0,0" TextWrapping="Wrap" Text="Temprature" VerticalAlignment="Top" Width="133" Height="30" 
+                            BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                             FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="374,129,374,390">
+                        <Label x:Name="Ph_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="645,129,102,390">
+                        <Label x:Name="Humidity_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="102,311,645,208">
+                        <Label x:Name="Soil_Moisture_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="102,496,645,23">
+                        <Label x:Name="Flow_Control_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="374,311,374,208">
+                        <Label x:Name="Light_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="646,496,102,23">
+                        <Label x:Name="Rainfall_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="645,311,102,208">
+                        <Label x:Name="Conductivity_Lable" Content="00" Height="70" Width="112" Foreground="#FF00FF2B" Background="#FF342A78"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            FontSize="20" FontStyle="Italic" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="40" Background="#FF623ED0"
+                        Margin="285,496,280,23">
+                        <Button x:Name="refreshdata" Content="Refresh Data" FontSize="40" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="248" Height="110" RenderTransformOrigin="0.662,0.172" Background="#FF1399A9" Click="refreshdata_Click"/>
+                    </Border>
+                    <TextBox HorizontalAlignment="Center" Margin="0,94,0,0" TextWrapping="Wrap" Text="PH" VerticalAlignment="Top" Width="132" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <TextBox x:Name="Soil_Moisture" HorizontalAlignment="Left" Margin="95,276,0,0" TextWrapping="Wrap" Text="Soil Moisture" VerticalAlignment="Top" Width="147" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" RenderTransformOrigin="0.421,0.417" />
+                    <TextBox HorizontalAlignment="Left" Margin="102,461,0,0" TextWrapping="Wrap" Text="Flow Control" VerticalAlignment="Top" Width="133" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <TextBox HorizontalAlignment="Center" Margin="0,276,0,0" TextWrapping="Wrap" Text="Light" VerticalAlignment="Top" Width="132" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <TextBox HorizontalAlignment="Left" Margin="646,461,0,0" TextWrapping="Wrap" Text="Rainfall" VerticalAlignment="Top" Width="132" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <TextBox HorizontalAlignment="Left" Margin="645,94,0,0" TextWrapping="Wrap" Text="Humidity" VerticalAlignment="Top" Width="133" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                    <TextBox HorizontalAlignment="Left" Margin="645,276,0,0" TextWrapping="Wrap" Text="Conductivity" VerticalAlignment="Top" Width="133" Height="30" 
+                        BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        FontSize="22" Foreground="Azure" Background="#FF1399A9" />
+                </Grid>
+                <Grid x:Name="Controlsgrid" Margin="0,0,0,-649" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Left" Width="880">
+                    <TextBlock Text="Controls" FontSize="32" FontWeight="SemiBold" Margin="30,20,0,582"
+                        HorizontalAlignment="Left" Foreground="#121518" Width="135"/>
+                    <!--Menu Separator-->
+                    <Separator Margin="10,66,30,582" Background="#725fdc" Grid.ColumnSpan="2"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="49,101,475,301" Width="356" Height="247" CornerRadius="30" Background="#FF434147" >
+                        <Grid HorizontalAlignment="Center" Background="#FF434147" VerticalAlignment="Center" Width="311" Height="200">
+                            <ProgressBar x:Name="Irrigation_Prgress"  HorizontalAlignment="Center"  Margin="0,60,0,78" Width="291" Background="#FFE52F2F"/>
+                            <Button x:Name="Increase_Irrigation" Margin="213,127,30,10" Content="+" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="Increase_Irrigation_Click"/>
+                            <Label Content="Irrigation" FontSize="20" FontWeight="SemiBold" FontStyle="Italic" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF434147" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Height="45"/>
+                            <Button x:Name="decrease_Irrigation" Margin="30,131,218,10" Content="-" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="decrease_Irrigation_Click"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="470,101,54,301" Width="356" Height="247" CornerRadius="30" Background="#FF434147" >
+                        <Grid HorizontalAlignment="Center" Background="#FF434147" VerticalAlignment="Center" Width="311" Height="200">
+                            <ProgressBar x:Name="Pest_progress"  HorizontalAlignment="Center"  Margin="0,60,0,78" Width="291" Background="#FFE52F2F"/>
+                            <Button x:Name="Increase_Pest" Margin="213,127,30,10" Content="+" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="Increase_Pest_Click"/>
+                            <Label Content="Pest" FontSize="20" FontWeight="SemiBold" FontStyle="Italic" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF434147" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Height="42"/>
+                            <Button x:Name="decrease_Pest" Margin="30,131,218,10" Content="-" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="decrease_Pest_Click"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="252,378,272,24" Width="356" Height="247" CornerRadius="30" Background="#FF434147" >
+                        <Grid HorizontalAlignment="Center" Background="#FF434147" VerticalAlignment="Center" Width="311" Height="200">
+                            <ProgressBar x:Name="Fertilizer_Progress"  HorizontalAlignment="Center"  Margin="0,60,0,78" Width="291" Background="#FFE52F2F"/>
+                            <Button x:Name="Increase_Fertilizer" Margin="213,127,30,10" Content="+" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="Increase_Fertilizer_Click"/>
+                            <Label Content="Fertilizer Dispenser" FontSize="20" FontWeight="SemiBold" FontStyle="Italic" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF434147" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="291" Height="32"/>
+                            <Button x:Name="decrease_Fertilizer" Margin="30,131,218,10" Content="-" FontSize="40" FontWeight="Bold"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF323036" Foreground="White" Width="63" Height="59" Click="decrease_Fertilizer_Click"/>
+                        </Grid>
+                    </Border>
+
+
+                </Grid>
+                <Grid x:Name="About_Usgrid" Margin="0,0,0,-649" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Left" Width="880">
+                    <TextBlock Text="About Us" FontSize="32" FontWeight="SemiBold" Margin="30,20,0,582"
+                                HorizontalAlignment="Left" Foreground="#121518" Width="140"/>
+                    <!--Menu Separator-->
+                    <Separator Margin="10,66,30,582" Background="#725fdc" Grid.ColumnSpan="2"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="100,130,479,77" CornerRadius="40" Background="#FF434147">
+                        <TextBox TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="False"
+                                 Foreground="White" Background="#FF5170CF" FontSize="20" FontWeight="SemiBold" FontStyle="Italic" Width="270" Height="398" Text="             BEST TEAM&#xA;  -----------------------------&#xA;        1. Ahmed Tohamy .&#xA;&#xA;        2. ELSayed Reda .&#xA; &#xA;       3.Maison Modathir .&#xA;&#xA;    4.Maryam Mohammed .&#xA;&#xA;        5.Fayrouz Khaled .&#xA; "/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="472,130,107,77" CornerRadius="40" Background="#FF434147">
+                        <TextBox TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"
+                            Foreground="White" Background="#FF5170CF" FontSize="20" FontWeight="SemiBold" FontStyle="Italic" Width="270" Height="398" Text="          About Application&#xA;  ------------------------------&#xA;This application helps in the development of agriculture by introducing modern technology such as: sensors and Arduino.&#xA;This application is used to display the different information of the agricultural land and monitor its condition and the changes that occur and some characteristics can be controlled&#xA;"/>
+                    </Border>
+
+                </Grid>
+            </Grid>
+            <Grid x:Name="SignInGrid" Margin="0,75,0,0" Background="#FF2C3030" Visibility="Visible" Grid.ColumnSpan="2" >
+                <Border  Background="#FF623ED0"  Margin="235,163,683,417" CornerRadius="40" Height="65">
+                    <TextBox Text="UserName" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                             FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                             FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Border  Background="#FF623ED0" Margin="435,258,190,322" CornerRadius="20" Height="65" >
+                    <PasswordBox x:Name="Password"  FontSize="20" PasswordChar='*'
+                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="Password_KeyDown" />
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="435,163,190,417" CornerRadius="20" Height="65">
+                    <TextBox x:Name="UserName" TextWrapping="Wrap" FontSize="20" 
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="UserName_KeyDown"/>
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="235,258,683,322" CornerRadius="40" Height="65">
+                    <TextBox Text="Password" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                        FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Button x:Name="Enter_To_Sign_Up" Content="Sign Up" HorizontalAlignment="Left" Margin="690,428,0,0" VerticalAlignment="Top" Width="200" Height="49"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" FontWeight="Bold" Background="#FF6E058D" Foreground="#FF38BA20" Click="Enter_To_Sign_Up_Click"/>
+                <Button x:Name="ShowPassword" Margin="0,276,114,336" HorizontalAlignment="Right"  Click="ShowPassword_Click" Width="50" Height="33">
+                    <Icon:PackIconMaterial Kind="Eye" Height="30" Width="40"/>
+                </Button>
+                <Button x:Name="SignInButton" Content="Sign In" HorizontalAlignment="Left" Margin="435,428,0,0" VerticalAlignment="Top" Width="200" Height="49"
+                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" FontWeight="Bold" Background="#FF6E058D" Foreground="#FF38BA20" Click="SignInButton_Click"/>
+                <TextBox x:Name="Wrong_account" HorizontalAlignment="Left" Margin="435,358,0,0" TextWrapping="Wrap" Text="User_Name or Password is incorrect ,Try agin..." 
+                         VerticalAlignment="Top" Width="455" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                         FontSize="15" FontWeight="Light" Foreground="Red" Background="#FF2C3030" Visibility="Collapsed"/>
+            </Grid>
+            <Grid x:Name="SignUpGrid" Margin="0,75,0,0" Background="#FF2C3030" Visibility="Collapsed" Grid.ColumnSpan="2" >
+                <Border  Background="#FF623ED0"  Margin="235,62,683,518" CornerRadius="40" Height="65">
+                    <TextBox Text="UserName" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                        FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Border  Background="#FF623ED0" Margin="435,244,190,336" CornerRadius="20" Height="65" >
+                    <PasswordBox x:Name="Sign_Up_Password"  FontSize="20" PasswordChar='*' Password=""
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="Sign_Up_Password_KeyDown"/>
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="435,62,190,518" CornerRadius="20" Height="65">
+                    <TextBox x:Name="Sign_Up_User" TextWrapping="Wrap" FontSize="20" Text=""
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="Sign_Up_User_KeyDown" />
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="235,244,683,336" CornerRadius="40" Height="65">
+                    <TextBox Text="Password" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                        FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Button x:Name="SignUpButton" Content="Sign Up" HorizontalAlignment="Left" Margin="490,526,0,0" VerticalAlignment="Top" Width="346" Height="49"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" FontWeight="Bold" Background="#FF6E058D" Foreground="#FF38BA20" Click="SignUpButton_Click"/>
+                <Button x:Name="Show_Sign_Up_Password" Margin="0,260,108,352" HorizontalAlignment="Right"  Click="Show_Sign_Up_Password_Click" Width="50" Height="33">
+                    <Icon:PackIconMaterial Kind="Eye" Height="30" Width="40"/>
+                </Button>
+                <TextBox x:Name="Sign_Up_Warning" HorizontalAlignment="Left" Margin="435,426,0,0" TextWrapping="Wrap" Text=""
+                    VerticalAlignment="Top" Width="455" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    FontSize="15" FontWeight="Light" Foreground="Red" Background="#FF2C3030" Visibility="Collapsed"/>
+                <Border  Background="#FF623ED0"  Margin="435,145,190,435" CornerRadius="20" Height="65">
+                    <TextBox x:Name="Sign_Up_Email" TextWrapping="Wrap" FontSize="20" Text=""
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="Sign_Up_Email_KeyDown"/>
+
+                </Border>
+                <Border  Background="#FF623ED0" Margin="435,322,190,257" CornerRadius="20" Height="65" >
+                    <PasswordBox x:Name="Sign_Up_ConfirmPassword"  FontSize="20" PasswordChar='*' Password=""
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" Margin="10,8,10,7" Height="50" KeyDown="Sign_Up_ConfirmPassword_KeyDown"/>
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="235,145,683,435" CornerRadius="40" Height="65">
+                    <TextBox Text="Email" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                        FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Border  Background="#FF623ED0"  Margin="235,322,683,257" CornerRadius="40" Height="65">
+                    <TextBox Text="Confirm" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"
+                        FontSize="25" Background="#FF623ED0" Foreground="#FFFFF900" IsEnabled="False"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        FontWeight="Medium" Margin="10,8,10,7" Height="50" SelectionBrush="#FF623ED0" BorderBrush="#FF623ED0"/>
+
+                </Border>
+                <Button x:Name="Show_Sign_Up_ConfirmPassword" Margin="0,338,108,273" HorizontalAlignment="Right"  Click="Show_Sign_Up_ConfirmPassword_Click" Width="50" Height="33">
+                    <Icon:PackIconMaterial Kind="Eye" Height="30" Width="40"/>
+                </Button>
+                <Button x:Name="Return_Sign_In"   HorizontalAlignment="Left" Margin="73,535,0,0" VerticalAlignment="Top" Height="40" Width="65" 
+                       Foreground="BlanchedAlmond" Background="#FF2C3030" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Return_Sign_In_Click" >
+                    <Icon:PackIconMaterial Kind="KeyboardReturn" VerticalAlignment="Center"  Width="55" Height="16" HorizontalAlignment="Center"/>
+                </Button>
+            </Grid>
+            <Border x:Name="Your_Account_Border" BorderBrush="Black" Background="#FF3D3F3F" BorderThickness="1" Grid.Column="1" Width="480" Height="650" CornerRadius="40" Margin="100,60,300,10" Visibility="Collapsed">
+                <Grid Background="#FF3D3F3F" Width="418" Height="622" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="New_Account_Button" Content="New Account" HorizontalAlignment="Left" Margin="24,476,0,0" VerticalAlignment="Top" Height="55"
+                            Width="362" Background="#FFC02828" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                            FontSize="25" FontWeight="SemiBold" Click="New_Account_Button_Click"/>
+                    <Border x:Name="AccountImage" Width="70" Height="70" Padding="3" Background="White" CornerRadius="100"
+                            DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,10,0,541" >
+
+                        <Ellipse>
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/R.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                    </Border>
+                    <TextBox HorizontalAlignment="Center" Margin="0,85,0,0" TextWrapping="Wrap" Text="Your Account" VerticalAlignment="Top"
+                     Width="408" Height="58" FontSize="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                     FontStyle="Oblique" Background="#FF3D3F3F" Foreground="White" BorderBrush="#FF3D3F3F" IsEnabled="False"/>
+
+                    <Separator Margin="0,166,8,454" DockPanel.Dock="Top" Height="0.8" Width="350" Background="Red"/>
+
+                    <Label HorizontalAlignment="Left" Margin="19,240,0,0" Content="Name:" VerticalAlignment="Top"
+                             Width="100" Height="47" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                             FontStyle="Oblique" Foreground="White" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+
+                    <TextBox x:Name="Your_Account_Name" Text="{Binding YourAccountName, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="135,240,0,0" VerticalAlignment="Top" Height="47" Width="269" FontSize="18"
+                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFE2AEAE" IsEnabled="False" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+
+                    <TextBox x:Name="Your_Account_Email"  HorizontalAlignment="Left" Margin="135,311,0,0" VerticalAlignment="Top" Height="47" Width="269" FontSize="18"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFE2AEAE" IsEnabled="False" BorderBrush="#FF3D3F3F" Background="#FF3D3F3F" />
+
+                    <TextBox x:Name="Your_Account_Password"  HorizontalAlignment="Left" Margin="135,383,0,0" VerticalAlignment="Top" Height="47" Width="269" FontSize="18"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFE2AEAE" IsEnabled="False" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F" />
+
+                    <Label HorizontalAlignment="Left" Margin="19,311,0,0" Content="Email:" VerticalAlignment="Top"
+                        Width="100" Height="47" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                        FontStyle="Oblique" Foreground="White" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+
+                    <Label HorizontalAlignment="Left" Margin="19,383,0,0" Content="Password:" VerticalAlignment="Top"
+                        Width="100" Height="47" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                        FontStyle="Oblique" Foreground="White" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+
+                    <Button x:Name="Return_to_main"  HorizontalAlignment="Left" Margin="352,10,0,0" VerticalAlignment="Top" Height="50" Width="50" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F" Click="Return_to_main_Click">
+                        <Icon:PackIconMaterial Kind="ExitToApp" Width="30" Height="30"/>
+                    </Button>
+                    <Label HorizontalAlignment="Left" Margin="19,172,0,0" Content="ID:" VerticalAlignment="Top"
+                        Width="100" Height="47" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                        FontStyle="Oblique" Foreground="White" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+                    <TextBox x:Name="Your_Account_Id" Text="{Binding YourAccountName, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="135,172,0,0" VerticalAlignment="Top" Height="47" Width="269" FontSize="18"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFE2AEAE" IsEnabled="False" Background="#FF3D3F3F" BorderBrush="#FF3D3F3F"/>
+
+                </Grid>
+            </Border>
+
+
+        </Grid>
+    </Border>
+</Window>
